@@ -24,10 +24,10 @@ public class OperatorsProgram
             IProgram program = ProgramFactory.MakeProgram(opcion);
             program.Execute();
 
-            Console.WriteLine("\n¿Desea realizar otra acción? ");
-            Console.WriteLine("1.- Sí");
-            Console.WriteLine("0.- No");
-            continueProccess = NumberUtilities.GetIntInput();
+            //Console.WriteLine("\n¿Desea realizar otra acción? ");
+            //Console.WriteLine("1.- Sí");
+            //Console.WriteLine("0.- No");
+            continueProccess = WantToContinue();
         }
 
     }
@@ -61,5 +61,21 @@ public class OperatorsProgram
         return opcion;
 
     }
+    public static int WantToContinue()
+    {
+        int option;
+
+        do
+        {
+            Console.WriteLine("\n¿Desea realizar otra operación? ");
+            Console.WriteLine("1.- Sí");
+            Console.WriteLine("0.- No");
+            option = NumberUtilities.GetIntInput();
+            if (option < 0 || option > 1)
+                Console.WriteLine("Ingrese un valor válido\n");
+        } while (option < 0 || option > 1);
+        return option;
+    }
+
 }
 

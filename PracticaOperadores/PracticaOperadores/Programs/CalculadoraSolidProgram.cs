@@ -12,15 +12,16 @@ namespace PracticaOperadores.Programs
         {
             Console.WriteLine("\nPrograma de calculadora SOLID.\n");
             int continueProccess = 1;
-            while (continueProccess == 1) { 
+            while (continueProccess == 1)
+            {
 
                 int operador = GetOption();
-                if(operador == 0)
+                if (operador == 0)
                 {
                     Console.WriteLine("\nHa salido de la calculadora SOLID.\n");
                     return;
                 }
-                ICalculator calculator = GetCalculator(operador);             
+                ICalculator calculator = GetCalculator(operador);
 
                 Console.WriteLine("\nIngrese el primer número");
                 float a = NumberUtilities.GetFloatInput();
@@ -28,10 +29,10 @@ namespace PracticaOperadores.Programs
                 float b = NumberUtilities.GetFloatInput();
 
                 Console.WriteLine("\nResultado:");
-
-                try { 
+                try
+                {
                     Console.WriteLine(calculator.Calculate(a, b));
-                    }
+                }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
@@ -39,10 +40,7 @@ namespace PracticaOperadores.Programs
 
                 Console.ReadLine();
 
-                Console.WriteLine("\n¿Desea realizar otra operación? ");
-                Console.WriteLine("1.- Sí");
-                Console.WriteLine("0.- No");
-                continueProccess = NumberUtilities.GetIntInput();
+                continueProccess = OperatorsProgram.WantToContinue();
             }
             Console.WriteLine("\nHa salido de la calculadora SOLID.\n");
         }
