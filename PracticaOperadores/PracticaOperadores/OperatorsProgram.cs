@@ -24,9 +24,6 @@ public class OperatorsProgram
             IProgram program = ProgramFactory.MakeProgram(opcion);
             program.Execute();
 
-            //Console.WriteLine("\n¿Desea realizar otra acción? ");
-            //Console.WriteLine("1.- Sí");
-            //Console.WriteLine("0.- No");
             continueProccess = WantToContinue();
         }
 
