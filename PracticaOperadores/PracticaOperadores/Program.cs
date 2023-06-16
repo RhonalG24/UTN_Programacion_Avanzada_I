@@ -6,9 +6,7 @@ namespace PracticaOperadores
     {
         static void Main(string[] args)
         {
-            //IProgram myProgram = new SumarProgram();
 
-            //myProgram.Execute();
 
             OperatorsProgram.RunOperatorsProgram();
         }

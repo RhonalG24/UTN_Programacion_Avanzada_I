@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PracticaOperadores.Programs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,164 +7,59 @@ using System.Threading.Tasks;
 
 namespace PracticaOperadores;
 
-    public class OperatorsProgram
+public class OperatorsProgram
+{
+    public static void RunOperatorsProgram()
     {
-        public static void RunOperatorsProgram()
+        Console.WriteLine("\nEnunciados\n");
+        int continueProccess = 1;
+        while (continueProccess == 1)
         {
-            float a = 10;
-            float b = 5;
-            float cero = 0;
-            float c = 3;
 
-            ICalculator calculator;
-            Console.WriteLine("Suma de " + a + " + " + b + ":");
-            Console.WriteLine(Calculator.Sumar(a, b));
-            Console.WriteLine("Con una instancia de la clase Suma:");
-            calculator = new Suma();
-            Console.WriteLine(calculator.Calculate(a, b));
-
-            Console.WriteLine("\nResta de " + a + " - " + b + ":");
-            Console.WriteLine(Calculator.Restar(a, b));
-            Console.WriteLine("Con una instancia de la clase Resta:");
-            calculator = new Resta();
-            Console.WriteLine(calculator.Calculate(a, b));
-
-            Console.ReadLine();
-            Console.WriteLine("\nMultiplicación de " + a + " * " + b + ":");
-            Console.WriteLine(Calculator.Multiplicar(a, b));
-            Console.WriteLine("Con una instancia de la clase Multiplicacion:");
-            calculator = new Multiplicacion();
-            Console.WriteLine(calculator.Calculate(a, b));
-
-
-            try {
-                Console.WriteLine("\nDivisión de " + a + " / " + b + ":");
-                Console.WriteLine(Calculator.Dividir(a, b));
-            }
-            catch (Exception ex)
+            int opcion = GetOption();
+            if (opcion == 0)
             {
-                Console.WriteLine(ex.Message);
-
+                return;
             }
-            try
-            {
-                Console.WriteLine("Con una instancia de la clase Division:");
-                calculator = new Division();
-                Console.WriteLine(calculator.Calculate(a, b));
-            } catch (Exception ex) { 
-                Console.WriteLine(ex.Message); 
-            }
-            try
-            {
+            IProgram program = ProgramFactory.MakeProgram(opcion);
+            program.Execute();
 
-                Console.WriteLine("\nDivisión de " + a + " / " + cero + ":");
-                Console.WriteLine(Calculator.Dividir(a, cero));
-                } catch (Exception ex) {
-        Console.WriteLine(ex.Message);
-    }
-            try
-            {
-                Console.WriteLine("Con una instancia de la clase Division:");
-                Console.WriteLine(calculator.Calculate(a, cero));
-            } catch (Exception ex) { 
-                Console.WriteLine(ex.Message); 
-            }
-
-            Console.ReadLine();
-            try
-            {
-                Console.WriteLine("\nResto de " + a + " / " + b + ":");
-                Console.WriteLine(Calculator.Resto(a, b));
-
-                Console.WriteLine("\nResto de " + a + " / " + cero + ":");
-                Console.WriteLine(Calculator.Resto(a, cero));
-
-                Console.WriteLine("\nResto de " + a + " / " + c + ":");
-                Console.WriteLine(Calculator.Resto(a, c));
-            } catch (Exception ex) { 
-                    Console.WriteLine(ex.Message); 
-            }
-            Console.ReadLine();
-
-            Console.WriteLine("\nCálculo de " + a + " al cuadrado");
-            Console.WriteLine(Calculator.ElevarAlCuadrado((int)a));
-
-            //Console.WriteLine("\nPromedio entre " + a + ", " + b + " y "+ c +":");
-            //Console.WriteLine(Calculator.PromedioDeTresNumeros(a,b, c));
-
-            //Promedio de n números
-            //List<float> numeros = NumberUtilities.GetNInputs();
-            //Console.WriteLine("\nEl promedio entre los números ");
-            //numeros.ForEach(x => Console.WriteLine(x));
-            //Console.WriteLine("es: ");
-            //Console.WriteLine(Calculator.PromedioDeNNumeros(numeros));
-
-            //Promedio de 3 numeros
-            Console.WriteLine("\nEl promedio entre 3 números ");
-            float result = Calculator.CalcularPromedio(3);
-            Console.WriteLine("El promedio es: " + result);
-
-
-            //Calculo del area de un tríangulo
-            Console.WriteLine("\nCálculo del area de un triángulo..");
-            Console.WriteLine("\nIngrese la base del triángulo: ");
-            float input1 = float.Parse(Console.ReadLine());
-            Console.WriteLine("\nIngrese la altura del triángulo: ");
-            float input2 = float.Parse(Console.ReadLine());
-            Console.WriteLine("\nEl area del triángulo es: " + Calculator.AreaTriangulo(input1, input2));
-
-            Console.WriteLine("\nCálculo del perimetro de un círculo..");
-            Console.WriteLine("\nIngrese el radio del circulo: ");
-            input1 = float.Parse(Console.ReadLine());
-            Console.WriteLine("\nEl perímetro del círculo es: " + Calculator.Perimetro(input1));
-
-            Console.WriteLine("\nConversión de grados Celsius a grados Fahrenheit..");
-            Console.WriteLine("\nIngrese la temperatura en grados Celsius: ");
-            input1 = float.Parse(Console.ReadLine());
-            Console.WriteLine("\n" + input1 +"° Celsius es equivalente a " + Calculator.CelsiusAFahrenheit(input1) + "° Fahrenheit.");
-
-            //Promedio de 4 numeros
-            Console.WriteLine("\nEl promedio entre 4 números ");
-            float result2 = Calculator.CalcularPromedio(4);
-            Console.WriteLine("El promedio es: " + result2);
-
-
-            //cm a pulgadas
-            Console.WriteLine("cm a pulgadas");
-            Console.WriteLine("Ingrese un valor en cm para convertirlo a pulgadas: ");
-            float inch = float.Parse(Console.ReadLine());
-            Console.WriteLine(inch + " cm son " + NumberUtilities.InchesToString(inch) + "\n");
-            Console.WriteLine("Ingrese un valor en cm para convertirlo a pulgadas: ");
-            float inch2 = float.Parse(Console.ReadLine());
-            Console.WriteLine(inch + " cm son " + NumberUtilities.InchesToString(inch2) + "\n");
-
-            //pesos a dolares
-            Console.WriteLine("Ingrese el valor en pesos:");
-            float pesos = float.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese la cotización actual (valor del peso por dolar):");
-            float cotizacion = float.Parse(Console.ReadLine());
-            Console.WriteLine(pesos + " pesos equivalen a " + Calculator.PesosADolares(pesos, cotizacion) + " dolares. \n");
-
-            //Cuenta del Restaurante
-            Console.WriteLine("Ingrese la cantidad de hot dogs: ");
-            int hotdogs = int.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese la cantidad de papas: ");
-            int papas = int.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese la cantidad de sodas: ");
-            int sodas = int.Parse(Console.ReadLine());
-            Console.WriteLine("La cuenta es: $" + Restaurant.CalculateBill(hotdogs, papas, sodas) + "\n");
-
-            int bin = -7;
-            Console.WriteLine("Número en base 10: " + bin + "\n");
-            Console.WriteLine(bin + " en base 2: ");
-            Console.WriteLine(Convert.ToString(bin, toBase: 2).PadLeft(32, '0'));
-            Console.WriteLine("\nDesplazando el bit más significaivo hacia la izquierda: ");
-            Console.WriteLine(Convert.ToString(bin << 1, toBase: 2).PadLeft(32, '0'));
-            Console.WriteLine("\nAhora el resultado del desplazamiento en base 10: ");
-            Console.WriteLine(Convert.ToString(bin << 1, toBase: 10).PadLeft(2, '0'));
-
-
+            Console.WriteLine("\n¿Desea realizar otra acción? ");
+            Console.WriteLine("1.- Sí");
+            Console.WriteLine("0.- No");
+            continueProccess = NumberUtilities.GetIntInput();
         }
 
     }
+    private static int GetOption()
+    {
+        Console.WriteLine("Ingrese el número del enunciado que desea ejecutar:");
+        Console.WriteLine("1.- 1.a) Programa para sumar");
+        Console.WriteLine("2.- 1.b) Programa para restar");
+        Console.WriteLine("3.- 1.c) Programa para multiplicar");
+        Console.WriteLine("4.- 1.d) Programa para dividir");
+        Console.WriteLine("5.- 1.e) Programa para calcular el resto");
+        Console.WriteLine("6.- 1.f) Cálculo de un número a una potencia");
+        Console.WriteLine("7.- 1.g) Cálculo del promedio entre 3 números");
+        Console.WriteLine("8.- 1.h) Cálculo del area de un triángulo");
+        Console.WriteLine("9.- 1.i) Cálculo del perimetro de un círculo");
+        Console.WriteLine("10.- 1.j) Conversión de grados Celsius a grados Fahrenheit");
+        Console.WriteLine("11.- 1.k) Calculadora SOLID");
+        Console.WriteLine("12.- 2) Calcular el promedio entre 4 notas");
+        Console.WriteLine("13.- 3) Conversión de cm a pulgadas");
+        Console.WriteLine("14.- 4) Conversión de pesos a dolares");
+        Console.WriteLine("15.- 5) Cálculo de la cuenta del Restaurant");
+        Console.WriteLine("16.- 7) Programa del número binario");
+        Console.WriteLine("0.- Salir");
+
+        int opcion = NumberUtilities.GetIntInput();
+        while (opcion > 16 || opcion < 0)
+        {
+            Console.WriteLine("Ingrese una opcion válida");
+            opcion = NumberUtilities.GetIntInput();
+        }
+        return opcion;
+
+    }
+}
 

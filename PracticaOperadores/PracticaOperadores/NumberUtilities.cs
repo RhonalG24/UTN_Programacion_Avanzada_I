@@ -52,5 +52,41 @@ namespace PracticaOperadores
             string input = Console.ReadLine();
             return input;
         }
+
+        public static int GetIntInput()
+        {
+            int result;
+            string input = Console.ReadLine();
+            bool isNumber = int.TryParse(input, out result);
+            while (!isNumber) {
+                Console.WriteLine("Ingrese un valor válido.");
+                input = Console.ReadLine();
+                isNumber = int.TryParse(input, out result);
+            }
+            return result;
+        }
+
+        public static float GetFloatInput()
+        {
+            float result;
+            Console.WriteLine("Use la coma (,) como separador si es un número entero.");
+            string input = Console.ReadLine();
+            bool isNumber = float.TryParse(input, out result);
+            while (!isNumber)
+            {
+                Console.WriteLine("Ingrese un valor válido.");
+                input = Console.ReadLine();
+                isNumber = float.TryParse(input, out result);
+            }
+            return result;
+        }
+
+        public static void GetTwoFloatsInput(float input1, float input2)
+        {
+            Console.WriteLine("Ingrese el primer número");
+            input1 = GetFloatInput();
+            Console.WriteLine("Ingrese el segundo número");
+            input2 = GetFloatInput();
+        }
     }
 }

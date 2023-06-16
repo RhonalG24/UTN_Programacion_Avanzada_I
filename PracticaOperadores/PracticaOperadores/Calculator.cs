@@ -50,6 +50,11 @@ public class Calculator
         return (int)Math.Pow(a, 2);
     }
 
+    public static int ElevarAUnaPotencia(int a, int b)
+    {
+        return (int)Math.Pow(a, b);
+    }
+
     public static float PromedioDeTresNumeros(float a, float b, float c)
     {
         return (a + b + c) / 3;
@@ -68,7 +73,7 @@ public class Calculator
         for (int i = 1; i <= cantNumeros; i++)
         {
             Console.WriteLine("\nIngrese el " + i + "° número:");
-            input = float.Parse(Console.ReadLine());
+            input = NumberUtilities.GetFloatInput();
             inputs.Add(input);
         }
 
