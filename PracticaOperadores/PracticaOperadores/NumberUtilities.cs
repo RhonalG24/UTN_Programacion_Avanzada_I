@@ -46,5 +46,11 @@ namespace PracticaOperadores
             string inchString = Math.Round(Calculator.CentimetrosAPulgadas(inch), 4).ToString() + " in";
             return inchString;
         }
+
+        public static string GetUserInput()
+        {
+            string input = Console.ReadLine();
+            return input;
+        }
     }
 }

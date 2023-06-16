@@ -1,10 +1,15 @@
-﻿namespace PracticaOperadores
+﻿//using PracticaOperadores.Programs;
+
+namespace PracticaOperadores
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //IProgram myProgram = new SumarProgram();
+
+            //myProgram.Execute();
+
             OperatorsProgram.RunOperatorsProgram();
         }
     }
